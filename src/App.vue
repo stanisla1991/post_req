@@ -3,8 +3,8 @@
 <template>
 <form @submit.prevent="createPost">
 <h1>kkccc</h1>
-<label for="userId"></label>
-<input type="text" id="userId" v-model="formData.userId">
+<label for="email"></label>
+<input type="text" id="email" v-model="formData.email">
 <button>Пригласить</button>
 </form>
 </template>
@@ -19,14 +19,15 @@ export default {
   data() {
     return {
       formData: {
-        userId: ''
+        email: '',
 
       }
     }
   },
   methods: {
     createPost () {
-        axios.post('https://api.poffigu.ru/invite', this.formData)
+        axios.post(
+          `https://api.poffigu.ru/invite`, this.formData)
           .then(response => console.log(response))
           .catch(error => console.log(error))
     },
